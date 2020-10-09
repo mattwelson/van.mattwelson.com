@@ -1,5 +1,4 @@
-import React from 'react'
-
+// TODO: Add custom preview
 export default {
   name: 'imageCaption',
   type: 'object',
