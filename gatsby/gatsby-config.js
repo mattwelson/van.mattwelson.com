@@ -1,3 +1,7 @@
+const dotenv = require( 'dotenv')
+
+dotenv.config({ path: '.env' })
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -30,7 +34,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: 'w0ghwla9',
+        projectId: process.env.GATSBY_SANITY_ID,
         dataset: 'production',
         token: process.env.SANITY_TOKEN,
         watchMode: true,
