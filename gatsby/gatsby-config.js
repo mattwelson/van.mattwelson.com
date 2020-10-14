@@ -1,12 +1,12 @@
-const dotenv = require( 'dotenv')
+const dotenv = require('dotenv')
 
 dotenv.config({ path: '.env' })
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Matt Welson`,
+    description: `Travel with my wife and I around New Zealand, hiking and driving and living out of a van.`,
+    author: `@mattwelson`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -38,6 +38,12 @@ module.exports = {
         dataset: 'production',
         token: process.env.SANITY_TOKEN,
         watchMode: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,42 +1,11 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import BlockContent from '@sanity/block-content-to-react'
-import getYouTubeId from 'get-youtube-id'
-import YouTube from 'react-youtube'
 import Img from 'gatsby-image'
-import { getFluidGatsbyImage } from 'gatsby-source-sanity'
+import BlockContent from '../utils/BlockContent'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
-
-const serializers = {
-  types: {
-    // eslint-disable-next-line react/display-name
-    youtube: ({ node }) => {
-      const { url } = node
-      const id = getYouTubeId(url)
-      return <YouTube videoId={id} />
-    },
-    imageCaption: ({ node }) => {
-      const sanityConfig = {
-        projectId: process.env.GATSBY_SANITY_ID,
-        dataset: 'production',
-      }
-      const fluid = getFluidGatsbyImage(
-        node.image.asset._ref,
-        { maxWidth: 960 },
-        sanityConfig
-      )
-      return (
-        <figure>
-          <Img fluid={fluid} alt={node.altText || node.caption} />
-          {node.caption && <figcaption>{node.caption}</figcaption>}
-        </figure>
-      )
-    },
-  },
-}
 
 export default function IndexPage({ data }) {
   return (
@@ -54,7 +23,6 @@ export default function IndexPage({ data }) {
           <Img fluid={region.image.asset.fluid} />
           <BlockContent
             blocks={region._rawDescription}
-            serializers={serializers}
             projectId={process.env.GATSBY_SANITY_ID}
             dataset="production"
           />
@@ -64,7 +32,7 @@ export default function IndexPage({ data }) {
         <div key={post.id}>
           <h2>{post.name}</h2>
           {post.image && <Img fluid={post.image.asset.fluid} />}
-          <BlockContent blocks={post._rawBody} serializers={serializers} />
+          <BlockContent blocks={post._rawBody} />
         </div>
       ))}
       <Link to="/page-2/">Go to page 2</Link> <br />
