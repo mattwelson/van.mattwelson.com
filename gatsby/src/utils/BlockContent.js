@@ -37,48 +37,17 @@ const serializers = {
       const { style = 'normal' } = props.node
 
       if (/^h\d/.test(style)) {
-        console.log({ slug: slug(props.children[0]), props })
+        const headerId = slug(props.children[0])
         const level = style.replace(/[^\d]/g, '')
-        if (level === '1') {
+        const Header = style
+        if (/[1-4]/.test(level)) {
           return (
-            <h1>
+            <Header id={headerId}>
               {props.children}
-              <Link to={`#${slug(props.children[0])}`}>Icon</Link>
-            </h1>
+              <Link to={`#${headerId}`}>#</Link>
+            </Header>
           )
         }
-        // TODO: DRY
-        if (level === '2') {
-          return (
-            <h2>
-              {props.children}
-              <Link to={`#${slug(props.children[0])}`}>Icon</Link>
-            </h2>
-          )
-        }
-        // TODO: DRY
-        if (level === '3') {
-          return (
-            <h3>
-              {props.children}
-              <Link to={`#${slug(props.children[0])}`}>Icon</Link>
-            </h3>
-          )
-        }
-        // TODO: DRY
-        if (level === '4') {
-          return (
-            <h4>
-              {props.children}
-              <Link to={`#${slug(props.children[0])}`}>Icon</Link>
-            </h4>
-          )
-        }
-        return React.createElement(
-          style,
-          { className: `heading-${level}` },
-          props.children
-        )
       }
 
       // Fall back to default handling
