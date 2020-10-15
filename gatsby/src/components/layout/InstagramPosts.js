@@ -14,9 +14,9 @@ export function Posts({ instagramPosts, title }) {
       <h2>{title}</h2>
       <h3>@m.welson</h3>
       <InstagramStyles>
-        {instagramPosts.map(post => (
-          <a href={post.url} target="_blank" rel="noopener noreferrer">
-            <Img fluid={post.image.asset.fluid} alt={post.name} />
+        {instagramPosts.map(({ url, image, name, id }) => (
+          <a href={url} target="_blank" rel="noopener noreferrer" key={id}>
+            <Img fluid={image.asset.fluid} alt={name} />
           </a>
         ))}
       </InstagramStyles>
@@ -32,6 +32,7 @@ export function DefaultPosts({ title }) {
         sort: { order: DESC, fields: _createdAt }
       ) {
         nodes {
+          id
           name
           url
           region {
