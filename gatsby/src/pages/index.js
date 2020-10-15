@@ -2,58 +2,44 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import BlockContent from '../utils/BlockContent'
+import TableOfContents from '../utils/TableOfContents'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
 
+import Regions from '../components/partials/Regions'
+
 export default function IndexPage({ data }) {
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <figure style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </figure>
-      {data.regions.nodes.map(region => (
-        <div key={region.id}>
-          <h2>{region.name}</h2>
-          <Img fluid={region.image.asset.fluid} />
-          <BlockContent
-            blocks={region._rawDescription}
-            projectId={process.env.GATSBY_SANITY_ID}
-            dataset="production"
-          />
-        </div>
-      ))}
+      <Regions regions={data.regions} />
       {data.posts.nodes.map(post => (
         <div key={post.id}>
-          <h2>{post.name}</h2>
+          <Link to={`/post/${post.slug.current}`}>
+            <h2>{post.name}</h2>
+          </Link>
           {post.image && <Img fluid={post.image.asset.fluid} />}
-          <BlockContent blocks={post._rawBody} />
+          <p>{post.description}</p>
         </div>
       ))}
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
     </Layout>
   )
 }
 
 export const query = graphql`
-  query MyQuery {
+  query IndexPageQuery {
     regions: allSanityRegion {
       nodes {
         id
         name
-        _rawDescription
         slug {
           current
         }
         image {
           asset {
-            fluid(maxWidth: 1000) {
+            fluid(maxHeight: 500) {
               ...GatsbySanityImageFluid
             }
           }
@@ -65,7 +51,6 @@ export const query = graphql`
         id
         description
         name
-        _rawBody
         slug {
           current
         }
