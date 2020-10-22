@@ -1,14 +1,31 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import BlockContent from '../utils/BlockContent'
-import TableOfContents from '../utils/TableOfContents'
+import styled from 'styled-components'
 
 import Layout from '../components/layout'
-import Image from '../components/image'
 import SEO from '../components/seo'
 
 import Regions from '../components/partials/Regions'
+
+const PostLinkStyles = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem 3rem;
+
+  & > a {
+    margin-top: 1rem;
+    grid-column: span 2;
+  }
+
+  & > p {
+    grid-column: span 2;
+  }
+
+  .gatsby-image-wrapper {
+    grid-row: span 2;
+  }
+`
 
 export default function IndexPage({ data }) {
   return (
@@ -16,13 +33,13 @@ export default function IndexPage({ data }) {
       <SEO title="Home" />
       <Regions regions={data.regions} />
       {data.posts.nodes.map(post => (
-        <div key={post.id}>
+        <PostLinkStyles key={post.id}>
+          {post.image && <Img fluid={post.image.asset.fluid} />}
           <Link to={`/post/${post.slug.current}`}>
             <h2>{post.name}</h2>
           </Link>
-          {post.image && <Img fluid={post.image.asset.fluid} />}
           <p>{post.description}</p>
-        </div>
+        </PostLinkStyles>
       ))}
     </Layout>
   )
