@@ -73,11 +73,7 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'image',
-          options: {
-            hotspot: true,
-            metadata: ['location', 'palette'],
-          },
+          type: 'imageCaption',
         },
       ],
     },
