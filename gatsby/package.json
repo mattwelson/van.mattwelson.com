@@ -53,9 +53,9 @@
   ],
   "license": "0BSD",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=\"-r esm\" gatsby build",
-    "develop": "cross-env NODE_OPTIONS=\"-r esm\" gatsby develop",
-    "serve": "cross-env NODE_OPTIONS=\"-r esm\" gatsby serve",
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "serve": "gatsby serve",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "clean": "gatsby clean",

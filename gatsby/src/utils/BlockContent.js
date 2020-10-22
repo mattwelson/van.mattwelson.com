@@ -24,7 +24,7 @@ function serializers(autolinkHeaders) {
           dataset: options.dataset,
         }
         const fluid = getFluidGatsbyImage(
-          node.image.asset._ref,
+          node.asset._ref,
           { maxWidth: 960 },
           sanityConfig
         )

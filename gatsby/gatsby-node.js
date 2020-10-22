@@ -5,7 +5,7 @@
  */
 
 // You can delete this file if you're not using it
-import { resolve } from 'path'
+const { resolve } = require(`path`)
 
 // TODO: create pages for regions
 // TODO: create pages for instagram posts
@@ -34,6 +34,6 @@ async function turnPostsIntoPages({ graphql, actions }) {
   )
 }
 
-export async function createPages(params) {
+exports.createPages = async function (params) {
   await Promise.all([turnPostsIntoPages(params)])
 }
