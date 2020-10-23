@@ -50,7 +50,7 @@ export default function Footer({ ...rest }) {
             <h2>@MattWelson</h2>
           </SocialItemStyle>
           <SocialItemStyle
-            href="https://twitter.com/mattwelson"
+            href="https://github.com/mattwelson"
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -60,7 +60,7 @@ export default function Footer({ ...rest }) {
             <h2>@MattWelson</h2>
           </SocialItemStyle>
           <SocialItemStyle
-            href="https://github.com/mattwelson"
+            href="https://www.strava.com/athletes/37049548"
             target="_blank"
             rel="noreferrer noopener"
             brand="#fc5200"
