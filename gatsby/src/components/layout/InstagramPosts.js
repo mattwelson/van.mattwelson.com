@@ -2,17 +2,32 @@ import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import { FaInstagram } from 'react-icons/fa'
 
 const InstagramStyles = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  a {
+    max-width: 400px;
+    min-width: 200px;
+  }
+`
+
+const HeaderStyles = styled.div`
+  text-align: center;
 `
 
 export function Posts({ instagramPosts, title }) {
   return (
     <>
-      <h2>{title}</h2>
-      <h3>@m.welson</h3>
+      <HeaderStyles>
+        <h2>@m.welson</h2>
+        <h3>{title}</h3>
+        <h2>
+          <FaInstagram />
+        </h2>
+      </HeaderStyles>
       <InstagramStyles>
         {instagramPosts.map(({ url, image, name, id }) => (
           <a href={url} target="_blank" rel="noopener noreferrer" key={id}>
@@ -55,5 +70,5 @@ export function DefaultPosts({ title }) {
 export default function InstagramPosts({ instagramPosts, title }) {
   if (instagramPosts)
     return <Posts instagramPosts={instagramPosts} title={title} />
-  return <DefaultPosts title="Photos from my Instagram" />
+  return <DefaultPosts />
 }

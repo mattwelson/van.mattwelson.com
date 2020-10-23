@@ -8,6 +8,12 @@ import { getFluidGatsbyImage } from 'gatsby-source-sanity'
 import { slug } from 'github-slugger'
 import { Link } from 'gatsby'
 import { HiOutlineLink } from 'react-icons/hi'
+import styled from 'styled-components'
+
+const CentreStyles = styled.div`
+  display: grid;
+  justify-content: center;
+`
 
 function serializers(autolinkHeaders) {
   return {
@@ -16,7 +22,12 @@ function serializers(autolinkHeaders) {
       youtube: ({ node }) => {
         const { url } = node
         const id = getYouTubeId(url)
-        return <YouTube videoId={id} />
+        return (
+          <CentreStyles>
+            {' '}
+            <YouTube videoId={id} />
+          </CentreStyles>
+        )
       },
       imageCaption: ({ node, options }) => {
         const sanityConfig = {
@@ -48,9 +59,11 @@ function serializers(autolinkHeaders) {
             return (
               <Header id={headerId} key={_key}>
                 {props.children}
-                <Link to={`#${headerId}`}>
-                  <HiOutlineLink />
-                </Link>
+                <div className="header__autolink">
+                  <Link to={`#${headerId}`}>
+                    <HiOutlineLink />
+                  </Link>
+                </div>
               </Header>
             )
           }

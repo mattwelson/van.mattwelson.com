@@ -12,6 +12,7 @@ const RegionsStyles = styled.div`
   .gatsby-image-wrapper {
     height: 500px;
     object-fit: cover;
+    margin-bottom: 0.25rem;
   }
 `
 
@@ -20,9 +21,11 @@ export default function Regions({ regions }) {
     <RegionsStyles>
       {regions.nodes.map(region => (
         <div key={region.id}>
-          <h2>{region.name}</h2>
           <Img fluid={region.image.asset.fluid} />
-          <BlockContent blocks={region._rawDescription} />
+          <h4>{region.name}</h4>
+          {region._rawDescription && (
+            <BlockContent blocks={region._rawDescription} />
+          )}
         </div>
       ))}
     </RegionsStyles>

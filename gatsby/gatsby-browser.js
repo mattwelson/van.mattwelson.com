@@ -33,5 +33,6 @@ export const shouldUpdateScroll = ({
   getSavedScrollPosition,
 }) => {
   anchorScroll(location)
-  return true
+  // use default scroll behaviour for page transitions
+  return !location.hash
 }
