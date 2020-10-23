@@ -2,13 +2,15 @@ import React from 'react'
 import { slug } from 'github-slugger'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { rhythm, scale } from './typography'
 
 const TocStyles = styled.div`
-  font-size: 0.8rem;
+  ${scale(-2 / 5)}
 
   h3 {
-    margin-bottom: 1rem;
-    font-size: 1rem;
+    margin-top: ${rhythm(1 / 2)};
+    margin-bottom: ${rhythm(1 / 2)};
+    ${scale(0)}
   }
 
   ul {
@@ -25,19 +27,19 @@ const TocStyles = styled.div`
   }
 
   .toc__h3 {
-    margin-left: 0.5rem;
+    margin-left: ${rhythm(1 / 2)};
   }
 
   .toc__h4 {
-    margin-left: 1rem;
+    margin-left: ${rhythm(2 / 2)};
   }
 
   .toc__h5 {
-    margin-left: 1.5rem;
+    margin-left: ${rhythm(3 / 2)};
   }
 
   .toc__h6 {
-    margin-left: 2rem;
+    margin-left: ${rhythm(4 / 2)};
   }
 `
 

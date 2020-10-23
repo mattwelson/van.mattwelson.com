@@ -2,17 +2,18 @@ import React from 'react'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import BlockContent from '../../utils/BlockContent'
+import { rhythm } from '../../utils/typography'
 
 const RegionsStyles = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: ${rhythm(1 / 2)};
+  margin-bottom: ${rhythm(1)};
 
   .gatsby-image-wrapper {
-    height: 500px;
+    height: ${rhythm(15)};
     object-fit: cover;
-    margin-bottom: 0.25rem;
+    margin-bottom: ${rhythm(1 / 4)};
   }
 `
 

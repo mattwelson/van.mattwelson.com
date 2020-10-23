@@ -2,11 +2,12 @@ import React from 'react'
 import { FaGithub, FaStrava, FaTwitterSquare } from 'react-icons/fa'
 import styled from 'styled-components'
 import InstagramPosts from './InstagramPosts'
+import { rhythm, scale } from '../../utils/typography'
 
 const FooterStyles = styled.div`
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin-top: ${rhythm(1)};
+  margin-bottom: ${rhythm(5)};
 
   .subtle {
     color: var(--font-subtle);
@@ -23,7 +24,7 @@ const SocialItemStyle = styled.a`
   text-decoration: none;
 
   .social__icon {
-    font-size: 2rem;
+    ${scale(1)};
     transition: color 0.2s;
   }
 

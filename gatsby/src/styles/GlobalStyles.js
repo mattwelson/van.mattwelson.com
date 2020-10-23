@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { rhythm, scale } from '../utils/typography'
 
 const GlobalStyles = createGlobalStyle`
     :root {
@@ -8,13 +9,13 @@ const GlobalStyles = createGlobalStyle`
   figcaption {
       font-style: italic;
       color: var(--font-subtle);
-      margin-top: 0.25rem;
+      margin-top: ${rhythm(1 / 4)};
   }
 
   .header__autolink {
-      font-size: 1rem;
+      ${scale(1 / 5)}
       display: inline;
-      margin-left: 0.5rem;
+      margin-left: ${rhythm(1 / 4)};
 
       a {
           color: inherit;

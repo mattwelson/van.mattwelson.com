@@ -7,22 +7,24 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 import Regions from '../components/partials/Regions'
+import { rhythm } from '../utils/typography'
 
 const PostLinkStyles = styled.div`
   a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem 3rem;
+    gap: 0 ${rhythm(3)};
     text-decoration: none;
     color: inherit;
 
     & > h2 {
-      margin-top: 1rem;
+      margin-top: ${rhythm(1)};
       grid-column: span 2;
     }
 
     & > p {
       grid-column: span 2;
+      padding-right: ${rhythm(3)};
     }
 
     .gatsby-image-wrapper {
@@ -32,7 +34,7 @@ const PostLinkStyles = styled.div`
 `
 
 const PostGroupStyles = styled.div`
-  margin-bottom: 5rem;
+  margin-bottom: ${rhythm(5)};
 `
 
 export default function IndexPage({ data }) {
