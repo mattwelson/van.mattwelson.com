@@ -4,6 +4,8 @@ import { rhythm, scale } from '../utils/typography'
 const GlobalStyles = createGlobalStyle`
     :root {
     --font-subtle: grey;
+    --color-red: #e84118;
+    --width-medium: 700px;
   }
 
   figcaption {

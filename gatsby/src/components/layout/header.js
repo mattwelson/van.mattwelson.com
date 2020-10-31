@@ -1,12 +1,25 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
+import { rhythm } from '../../utils/typography'
+
+const HeaderStyles = styled.header`
+  margin-bottom: ${rhythm(1)};
+
+  a {
+    text-decoration: none;
+  }
+
+  .brand {
+    color: var(--color-red);
+  }
+`
 
 const Header = ({ siteTitle }) => (
-  <header
+  <HeaderStyles
     style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
+      marginBottom: rhythm(1),
     }}
   >
     <div
@@ -17,18 +30,12 @@ const Header = ({ siteTitle }) => (
       }}
     >
       <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
+        <Link className="brand" to="/">
           {siteTitle}
         </Link>
       </h1>
     </div>
-  </header>
+  </HeaderStyles>
 )
 
 Header.propTypes = {
