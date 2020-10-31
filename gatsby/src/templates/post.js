@@ -42,7 +42,7 @@ export default function PostTemplate({ data }) {
   const { post } = data
   return (
     <Layout>
-      <SEO title={post.name} />
+      <SEO title={post.name} description={post.description} />
       <PostStyles key={post.id}>
         <div className="post__details">
           <h1>{post.name}</h1>
