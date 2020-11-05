@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
 
   figcaption {
       font-style: italic;
-      color: var(--font-subtle);
+      opacity: 0.4;
       margin-top: ${rhythm(1 / 4)};
   }
 

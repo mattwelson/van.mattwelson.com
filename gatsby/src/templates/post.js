@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import BlockContent from '../utils/BlockContent'
@@ -25,6 +25,14 @@ const PostStyles = styled.article`
         opacity: 0.8;
         font-size: 0.9rem;
       }
+
+      h1 {
+        margin-bottom: ${rhythm(0.25)};
+      }
+
+      h6 {
+        margin-bottom: ${rhythm(0.5)};
+      }
     }
 
     .post__toc {
@@ -46,6 +54,7 @@ export default function PostTemplate({ data }) {
       <PostStyles key={post.id}>
         <div className="post__details">
           <h1>{post.name}</h1>
+          <h6>{post.date}</h6>
           <p>{post.description}</p>
         </div>
         {post.image && <Img fluid={post.image.asset.fluid} />}
@@ -61,6 +70,7 @@ export const query = graphql`
     post: sanityPost(id: { eq: $pageId }) {
       id
       description
+      date(formatString: "0d/MM/yyyy")
       name
       _rawBody
       slug {

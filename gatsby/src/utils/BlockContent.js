@@ -36,7 +36,7 @@ function serializers(autolinkHeaders) {
         }
         const fluid = getFluidGatsbyImage(
           node.asset._ref,
-          { maxWidth: 960 },
+          { maxWidth: 960, maxHeight: 700 },
           sanityConfig
         )
         return (
